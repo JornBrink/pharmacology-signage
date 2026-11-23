@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, initial-scale=1.0">
+  <title>Leiden Pharmacology — Live Display</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --blue:      #001158;
+      --blue-mid:  #002080;
+      --gold:      #c8a94c;
+      --bg:        #040d1e;
+      --surface:   #071428;
+      --border:    rgba(255,255,255,0.07);
+      --text:      #ffffff;
+      --muted:     #7a93b8;
+      --slide-ms:  12000;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      overflow: hidden;
+    }
+
+    /* ── HEADER ─────────────────────────────────────── */
+    header {
+      height: 88px;
+      background: var(--blue);
+      border-bottom: 3px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      flex-shrink: 0;
+    }
+
+    .h-left { display: flex; flex-direction: column; gap: 4px; }
+
+    .h-name {
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .h-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .h-right { text-align: right; }
+
+    .h-clock {
+      font-size: 2.1rem;
+      font-weight: 300;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.04em;
+    }
+
+    .h-date { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+
+    /* ── MAIN GRID ───────────────────────────────────── */
+    main {
+      height: calc(100vh - 88px - 44px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /* ── PANELS ─────────────────────────────────────── */
+    .panel {
+      display: flex;
+      flex-direction: column;
+      padding: 28px 36px 20px;
+      overflow: hidden;
+    }
+
+    .panel + .panel {
+      border-left: 1px solid var(--border);
+    }
+
+    .panel-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+
+    .panel-label::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ── CAROUSEL ───────────────────────────────────── */
+    .carousel {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transition: opacity 0.7s ease;
+      pointer-events: none;
+    }
+
+    .slide.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ── LINKEDIN SLIDE ─────────────────────────────── */
+    .li-actor {
+      font-size: 0.8rem;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .li-time {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .li-text {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.9);
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 11;
+      -webkit-box-orient: vertical;
+    }
+
+    .li-img {
+      margin-top: 16px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      max-height: 180px;
+    }
+
+    .li-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ── PUBLICATION SLIDE ──────────────────────────── */
+    .pub-journal {
+      font-size: 0.72rem;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .pub-title {
+      font-size: 1.35rem;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
+
+    .pub-authors {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .pub-authors strong {
+      color: rgba(255,255,255,0.8);
+    }
+
+    .pub-year {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: auto;
+      padding-top: 16px;
+    }
+
+    /* ── PROGRESS DOTS ──────────────────────────────── */
+    .dots {
+      display: flex;
+      gap: 6px;
+      padding-top: 14px;
+      flex-shrink: 0;
+    }
+
+    .dot {
+      height: 4px;
+      width: 18px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.15);
+      transition: background 0.3s, width 0.3s;
+    }
+
+    .dot.active {
+      background: var(--gold);
+      width: 32px;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────── */
+    footer {
+      height: 44px;
+      background: var(--blue);
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 48px;
+      gap: 32px;
+    }
+
+    .f-item {
+      font-size: 0.72rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .f-item svg { opacity: 0.6; flex-shrink: 0; }
+
+    .f-refresh {
+      margin-left: auto;
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ── LOADING STATE ──────────────────────────────── */
+    .placeholder {
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 24px 0;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="h-left">
+    <div class="h-name">Leiden Pharmacology</div>
+    <div class="h-sub">LACDR &nbsp;·&nbsp; Systems Pharmacology &amp; Pharmacometrics</div>
+  </div>
+  <div class="h-right">
+    <div class="h-clock" id="clock">--:--</div>
+    <div class="h-date"  id="date"></div>
+  </div>
+</header>
+
+<main>
+  <!-- LinkedIn panel -->
+  <div class="panel">
+    <div class="panel-label">LinkedIn Updates</div>
+    <div class="carousel" id="li-carousel"><div class="placeholder">Loading…</div></div>
+    <div class="dots"     id="li-dots"></div>
+  </div>
+
+  <!-- Publications panel -->
+  <div class="panel">
+    <div class="panel-label">Recent Publications</div>
+    <div class="carousel" id="pub-carousel"><div class="placeholder">Loading…</div></div>
+    <div class="dots"     id="pub-dots"></div>
+  </div>
+</main>
+
+<footer>
+  <div class="f-item">
+    <!-- LinkedIn icon -->
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+    </svg>
+    Leiden Pharmacology
+  </div>
+  <div class="f-item">
+    <!-- PubMed icon (DNA) -->
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M4 2h2v3h12V2h2v3h1a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1V2m1 7v2h12V9H5m0 4v2h8v-2H5z"/>
+    </svg>
+    PubMed · van Hasselt JGC
+  </div>
+  <div class="f-refresh" id="refresh-ts">—</div>
+</footer>
+
+<script>
+// ── CONFIG ────────────────────────────────────────────
+const SLIDE_INTERVAL = 12000;   // ms per slide
+const PAGE_RELOAD    = 60 * 60 * 1000; // reload page every hour
+
+// ── CLOCK ─────────────────────────────────────────────
+const DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+function updateClock() {
+  const n = new Date();
+  document.getElementById('clock').textContent =
+    String(n.getHours()).padStart(2,'0') + ':' + String(n.getMinutes()).padStart(2,'0');
+  document.getElementById('date').textContent =
+    `${DAYS[n.getDay()]}, ${n.getDate()} ${MONTHS[n.getMonth()]} ${n.getFullYear()}`;
+}
+updateClock();
+setInterval(updateClock, 10000);
+
+// ── HELPERS ───────────────────────────────────────────
+function relTime(str) {
+  if (!str) return '';
+  const diff = Date.now() - new Date(str).getTime();
+  if (isNaN(diff)) return str;
+  const d = Math.floor(diff / 86400000);
+  if (d === 0) return 'Today';
+  if (d === 1) return 'Yesterday';
+  if (d < 7)  return `${d} days ago`;
+  if (d < 30) return `${Math.floor(d/7)} week${Math.floor(d/7)>1?'s':''} ago`;
+  return `${Math.floor(d/30)} month${Math.floor(d/30)>1?'s':''} ago`;
+}
+
+function highlightName(text, names = ['van Hasselt']) {
+  names.forEach(n => {
+    text = text.replace(new RegExp(n, 'gi'), `<strong>${n}</strong>`);
+  });
+  return text;
+}
+
+// ── CAROUSEL BUILDER ──────────────────────────────────
+function buildCarousel(carouselId, dotsId, items, renderFn, offset = 0) {
+  const carousel = document.getElementById(carouselId);
+  const dotsEl   = document.getElementById(dotsId);
+  if (!items.length) {
+    carousel.innerHTML = '<div class="placeholder">No items found.</div>';
+    return;
+  }
+
+  carousel.innerHTML = '';
+  dotsEl.innerHTML   = '';
+
+  const slides = items.map((item, i) => {
+    const el = document.createElement('div');
+    el.className = 'slide' + (i === 0 ? ' active' : '');
+    el.innerHTML = renderFn(item);
+    carousel.appendChild(el);
+
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dotsEl.appendChild(dot);
+
+    return el;
+  });
+
+  const dots = [...dotsEl.querySelectorAll('.dot')];
+  let cur = 0;
+
+  setTimeout(() => {
+    setInterval(() => {
+      slides[cur].classList.remove('active');
+      dots[cur].classList.remove('active');
+      cur = (cur + 1) % slides.length;
+      slides[cur].classList.add('active');
+      dots[cur].classList.add('active');
+    }, SLIDE_INTERVAL);
+  }, offset);
+}
+
+// ── LINKEDIN ──────────────────────────────────────────
+async function loadLinkedIn() {
+  try {
+    const res  = await fetch('./data/linkedin.json?t=' + Date.now());
+    const data = await res.json();
+    const posts = (data.posts || []).slice(0, 6);
+
+    buildCarousel('li-carousel', 'li-dots', posts, post => {
+      const when = relTime(post.timeRaw);
+      return `
+        <div class="li-actor">${post.actor || 'Leiden Pharmacology'}</div>
+        ${when ? `<div class="li-time">${when}</div>` : ''}
+        <div class="li-text">${post.text}</div>
+        ${post.img ? `<div class="li-img"><img src="${post.img}" alt="" loading="lazy" onerror="this.closest('.li-img').remove()"></div>` : ''}
+      `;
+    });
+
+    // Update footer timestamp
+    if (data.updated) {
+      const d = new Date(data.updated);
+      document.getElementById('refresh-ts').textContent =
+        'Updated ' + d.toLocaleDateString('nl-NL') + ' ' +
+        String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+    }
+  } catch (e) {
+    console.warn('LinkedIn load failed:', e.message);
+    document.getElementById('li-carousel').innerHTML =
+      '<div class="placeholder">LinkedIn posts unavailable.</div>';
+  }
+}
+
+// ── PUBMED ────────────────────────────────────────────
+async function loadPubMed() {
+  try {
+    const res  = await fetch('./data/pubmed.json?t=' + Date.now());
+    const data = await res.json();
+    const pubs = (data.publications || []).slice(0, 8);
+
+    if (!pubs.length) {
+      document.getElementById('pub-carousel').innerHTML =
+        '<div class="placeholder">No publications found yet.</div>';
+      return;
+    }
+
+    buildCarousel('pub-carousel', 'pub-dots', pubs, pub => {
+      const authors = pub.authors || [];
+      const first5  = authors.slice(0, 5).map(a =>
+        a.toLowerCase().includes('hasselt') ? `<strong>${a}</strong>` : a
+      ).join(', ');
+      const etAl = authors.length > 5 ? ' <em>et al.</em>' : '';
+
+      return `
+        <div class="pub-journal">${pub.journal}</div>
+        <div class="pub-title">${pub.title}</div>
+        <div class="pub-authors">${first5}${etAl}</div>
+        <div class="pub-year">Published ${pub.year}</div>
+      `;
+    }, SLIDE_INTERVAL / 2); // Offset so panels don't switch simultaneously
+  } catch (e) {
+    console.warn('PubMed load failed:', e.message);
+    document.getElementById('pub-carousel').innerHTML =
+      '<div class="placeholder">Publications unavailable.</div>';
+  }
+}
+
+// ── INIT ──────────────────────────────────────────────
+loadLinkedIn();
+loadPubMed();
+
+// Reload page every hour to pick up fresh data from GitHub
+setTimeout(() => location.reload(), PAGE_RELOAD);
+</script>
+</body>
+</html>

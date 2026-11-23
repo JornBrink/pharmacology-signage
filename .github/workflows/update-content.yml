@@ -1,0 +1,44 @@
+name: Update Display Content
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # Dagelijks om 07:00 Amsterdam tijd
+  workflow_dispatch:        # Handmatig starten via GitHub UI
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: cd scripts && npm install
+
+      - name: Install Playwright browser
+        run: cd scripts && npx playwright install chromium --with-deps
+
+      - name: Scrape LinkedIn
+        env:
+          LINKEDIN_EMAIL: ${{ secrets.LINKEDIN_EMAIL }}
+          LINKEDIN_PASSWORD: ${{ secrets.LINKEDIN_PASSWORD }}
+        run: cd scripts && node scrape-linkedin.js
+
+      - name: Fetch PubMed publications
+        run: cd scripts && node fetch-pubmed.js
+
+      - name: Commit updated data
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "GitHub Actions"
+          git add data/
+          git diff --staged --quiet || git commit -m "Update content $(date -u '+%Y-%m-%d')"
+          git push

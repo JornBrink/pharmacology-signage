@@ -1,0 +1,8 @@
+{
+  "name": "signage-scripts",
+  "version": "1.0.0",
+  "description": "Content scrapers for Leiden Pharmacology signage display",
+  "dependencies": {
+    "playwright": "^1.40.0"
+  }
+}
