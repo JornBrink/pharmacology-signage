@@ -1,4 +1,135 @@
 {
-  "updated": "2024-01-01T00:00:00.000Z",
-  "publications": []
+  "updated": "2026-11-23T10:59:56.181Z",
+  "publications": [
+    {
+      "id": "43044887",
+      "title": "Model-based interspecies scaling of LPS-induced inflammation",
+      "authors": [
+        "van de Kreeke M",
+        "Liu F",
+        "Knibbe CAJ",
+        "Krekels EHJ",
+        "van Hasselt JGC"
+      ],
+      "journal": "European journal of pharmaceutical sciences : official journal of the European Federation for Pharmaceutical Sciences",
+      "year": "2026",
+      "doi": "doi: 10.1016/j.ejps.2026.107717",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/43044887/"
+    },
+    {
+      "id": "43018891",
+      "title": "Multi-Objective Optimization of Population-Level Dosing Regimens",
+      "authors": [
+        "Tandar ST",
+        "Beldjenna M",
+        "Nicholl-Morris K",
+        "van Wijk RC",
+        "Guo T",
+        "Aulin LBS",
+        "van Hasselt JGC"
+      ],
+      "journal": "Clinical pharmacokinetics",
+      "year": "2026",
+      "doi": "doi: 10.1007/s40262-026-01714-5",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/43018891/"
+    },
+    {
+      "id": "42852779",
+      "title": "The influence of heteroresistance, growth, and antibiotic selection in shaping the invasion dynamics of colistin resistant Pseudomonas aeruginosa",
+      "authors": [
+        "Rios ACA",
+        "Pham AD",
+        "Knibbe CAJ",
+        "Rozen DE",
+        "van Hasselt JGC",
+        "Aulin LBS"
+      ],
+      "journal": "FEMS microbiology letters",
+      "year": "2026",
+      "doi": "pii: fnag125. doi: 10.1093/femsle/fnag125",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/42852779/"
+    },
+    {
+      "id": "42775990",
+      "title": "Erratum for Sudarsono et al., \"A novel hollow-fiber infection model (HFIM) for antiviral PK/PD studies of CMV infection\"",
+      "authors": [
+        "Sudarsono LM",
+        "Wenker SAM",
+        "Liu X",
+        "Brink J",
+        "van den Berg D-J",
+        "van Hasselt JGC",
+        "Märtson A-G"
+      ],
+      "journal": "Antimicrobial agents and chemotherapy",
+      "year": "2026",
+      "doi": "doi: 10.1128/aac.01045-26",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/42775990/"
+    },
+    {
+      "id": "42771197",
+      "title": "A mechanism-based model of immune status effects on antibiotic PK/PD targets in bacteremia",
+      "authors": [
+        "van de Kreeke M",
+        "Pham AD",
+        "Mehciz M",
+        "Jordens T",
+        "Uyterlinde MG",
+        "van Wijk RC",
+        "Aulin LBS",
+        "Knibbe CAJ",
+        "Krekels EHJ",
+        "Zwep LB",
+        "van Hasselt JGC"
+      ],
+      "journal": "Journal of pharmacokinetics and pharmacodynamics",
+      "year": "2026",
+      "doi": "doi: 10.1007/s10928-026-10063-6",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/42771197/"
+    },
+    {
+      "id": "42690196",
+      "title": "Reply to Srivastava and Gumbo, \"Rigor and reproducibility of hollow-fiber infection model for antiviral pharmacokinetics/pharmacodynamics studies\"",
+      "authors": [
+        "Sudarsono LM",
+        "Wenker SAM",
+        "Liu X",
+        "Brink J",
+        "van den Berg D-J",
+        "van Hasselt JGC",
+        "Märtson A-G"
+      ],
+      "journal": "Antimicrobial agents and chemotherapy",
+      "year": "2026",
+      "doi": "doi: 10.1128/aac.00980-26",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/42690196/"
+    },
+    {
+      "id": "42642789",
+      "title": "Do Brain Extracellular Fluid Concentrations Predict PET-Inferred Receptor Occupancy in Human CNS? A Mechanistic Model-Based Analysis of Dopamine D2 Receptor Ligands",
+      "authors": [
+        "Budda D",
+        "van Hasselt JGC",
+        "de Lange ECM"
+      ],
+      "journal": "Clinical pharmacology and therapeutics",
+      "year": "2026",
+      "doi": "doi: 10.1002/cpt.70453",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/42642789/"
+    },
+    {
+      "id": "42638221",
+      "title": "Successful Translational Prediction of Bedaquiline's Phase 2a Clinical Trial Results against Tuberculosis: The Zebrafish as a New Approach Methodology",
+      "authors": [
+        "van Lieshout B",
+        "Hanuun A",
+        "van Hasselt JGC",
+        "van Wijk RC"
+      ],
+      "journal": "Clinical pharmacology and therapeutics",
+      "year": "2026",
+      "doi": "doi: 10.1002/cpt.70430",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/42638221/"
+    }
+  ]
 }
