@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-23T11:09:53.575Z",
+  "updated": "2026-11-23T11:20:56.424Z",
   "publications": [
     {
       "id": "43044887",
@@ -14,7 +14,11 @@
       "journal": "European journal of pharmaceutical sciences : official journal of the European Federation for Pharmaceutical Sciences",
       "year": "2026",
       "doi": "doi: 10.1016/j.ejps.2026.107717",
-      "link": "https://pubmed.ncbi.nlm.nih.gov/43044887/"
+      "link": "https://pubmed.ncbi.nlm.nih.gov/43044887/",
+      "abstract": "Lipopolysaccharide (LPS) challenge studies in animal models and healthy volunteers are widely used to investigate inflammatory cytokine responses and evaluate anti-inflammatory therapies. Quantitative interspecies differences complicate translation of anti-inflammatory responses and their pharmacological modulation from animals to humans. This study aimed to demonstrate how a model-based framework can be used to characterize LPS-induced cytokine responses and quantify interspecies differences towards improving animal-to-human translation. To this end, we utilized data from published LPS challenge studies in humans, pigs, and rats, from which study characteristics, LPS doses, and concentration-time profiles of interleukin-6 (IL-6) and tumour necrosis factor-α (TNF-α) were extracted. For each species, cytokine dynamics were characterized using a kinetic-pharmacodynamic (K-PD) model with a turnover model structure where LPS stimulated cytokine production. Delay differential equations (DDEs) were used to account for delayed cytokine production. The model framework adequately described species-specific IL-6 and TNF-α responses and enabled quantitative comparison of LPS effects on cytokine production. Overall, this study demonstrates how LPS challenge data can be integrated into a quantitative framework for investigating interspecies differences. The framework provides a foundation for quantitative translation of inflammatory responses from animal models to humans.",
+      "tldr": "How LPS challenge data can be integrated into a quantitative framework for investigating interspecies differences is demonstrated and provides a foundation for quantitative translation of inflammatory responses from animal models to humans.",
+      "citations": 0,
+      "openAccessPdf": "https://www.sciencedirect.com/science/article/pii/S0928098726002915/pdf"
     },
     {
       "id": "43018891",
@@ -31,7 +35,11 @@
       "journal": "Clinical pharmacokinetics",
       "year": "2026",
       "doi": "doi: 10.1007/s40262-026-01714-5",
-      "link": "https://pubmed.ncbi.nlm.nih.gov/43018891/"
+      "link": "https://pubmed.ncbi.nlm.nih.gov/43018891/",
+      "abstract": "BACKGROUND AND OBJECTIVE\nDrug treatment optimization involves multiple competing objectives, including efficacy, toxicity, resistance, and cost. It is further complicated by interindividual variability that can make standardized regimens suboptimal for individual patients. We developed a population pharmacokinetics- pharmacodynamics (PKPD)-based framework to optimize dosing regimen at the population-level while accounting for interindividual variability, covariate distributions, and clinical expert input.\n\n\nMETHODS\nThe framework optimizes treatment design parameters, including dose and dosing frequency, to maximize population attainment of treatment objectives. Individual attainment of these objectives is estimated using a population PKPD model and quantified into a penalty metric to enable multi-objective dose regimen optimization. Clinical expert input is incorporated through two approaches: 1) multi-criteria decision analysis (MCDA)-based objective weight assignment and 2) gate optimization, an approach to search for a treatment design for which target attainment is equal to or greater than a reference treatment across all objectives.\n\n\nRESULTS\nThe framework was evaluated in case studies to highlight how this approach can support complex treatment design, incorporate clinical expert input, and integrate covariate information. Grid search evaluation confirmed that the framework identifies solutions close to the expected location of the global optimum.\n\n\nCONCLUSION\nThe presented framework is adaptable to diverse patient and disease contexts and supports population-level, model-informed dosing optimization.",
+      "tldr": "A population pharmacokinetics- pharmacodynamics (PKPD)-based framework to optimize dosing regimen at the population-level while accounting for interindividual variability, covariate distributions, and clinical expert input is developed.",
+      "citations": 0,
+      "openAccessPdf": "https://link.springer.com/content/pdf/10.1007/s40262-026-01714-5.pdf"
     },
     {
       "id": "42852779",
@@ -47,7 +55,11 @@
       "journal": "FEMS microbiology letters",
       "year": "2026",
       "doi": "pii: fnag125. doi: 10.1093/femsle/fnag125",
-      "link": "https://pubmed.ncbi.nlm.nih.gov/42852779/"
+      "link": "https://pubmed.ncbi.nlm.nih.gov/42852779/",
+      "abstract": "Heteroresistance, where a small subpopulation of phenotypically resistant cells coexists within an otherwise susceptible population, plays a critical role in bacterial survival during antibiotic exposure. Yet, its influence on the invasion success of genetically resistant strains remains poorly understood. In this study, we investigate the influence of bacterial heteroresistance, growth, and antibiotic selection on the outcome of an invasion experiment. We quantified the invasion dynamics of a bioluminescent colistin-resistant Pseudomonas aeruginosa strain across a colistin concentration gradient during co-culture with colistin-susceptible clinical P. aeruginosa isolates with varying levels of heteroresistance. The observed variation in heteroresistance and fitness of the clinical isolates allowed investigation of the impact of these factors on invasion dynamics. We hypothesized that fitter isolates would limit invasion through competitive exclusion, while heteroresistant isolates, despite their growth costs, may serve as reservoirs for resistance evolution under antibiotic selection. Our results show that in antibiotic-free conditions, faster-growing isolates competitively excluded the colistin resistant invader while isolates with high levels of heteroresistance failed to do so. This competitive landscape shifted with increasing colistin concentration, giving the invader a fitness advantage that peaked around 2-4xMIC of the clinical isolate. The shift in the landscape over the colistin gradient might further have been influenced by the presence of heteroresistance in the clinical isolates. These findings reveal how both heteroresistance and competitive exclusion shapes invasion dynamics. Understanding these interactions is critical for redesigning treatment strategies that minimize ecological opportunities for resistant strains to establish and expand.",
+      "tldr": "The results show that in antibiotic-free conditions, faster-growing isolates competitively excluded the colistin resistant invader while isolates with high levels of heteroresistance failed to do so.",
+      "citations": 0,
+      "openAccessPdf": "https://doi.org/10.64898/2025.12.15.694340"
     },
     {
       "id": "42775990",
@@ -64,7 +76,11 @@
       "journal": "Antimicrobial agents and chemotherapy",
       "year": "2026",
       "doi": "doi: 10.1128/aac.01045-26",
-      "link": "https://pubmed.ncbi.nlm.nih.gov/42775990/"
+      "link": "https://pubmed.ncbi.nlm.nih.gov/42775990/",
+      "abstract": "",
+      "tldr": "",
+      "citations": null,
+      "openAccessPdf": ""
     },
     {
       "id": "42771197",
@@ -85,7 +101,11 @@
       "journal": "Journal of pharmacokinetics and pharmacodynamics",
       "year": "2026",
       "doi": "doi: 10.1007/s10928-026-10063-6",
-      "link": "https://pubmed.ncbi.nlm.nih.gov/42771197/"
+      "link": "https://pubmed.ncbi.nlm.nih.gov/42771197/",
+      "abstract": "",
+      "tldr": "",
+      "citations": null,
+      "openAccessPdf": ""
     },
     {
       "id": "42690196",
@@ -102,7 +122,11 @@
       "journal": "Antimicrobial agents and chemotherapy",
       "year": "2026",
       "doi": "doi: 10.1128/aac.00980-26",
-      "link": "https://pubmed.ncbi.nlm.nih.gov/42690196/"
+      "link": "https://pubmed.ncbi.nlm.nih.gov/42690196/",
+      "abstract": "W e",
+      "tldr": "",
+      "citations": 0,
+      "openAccessPdf": "https://doi.org/10.1128/aac.00980-26"
     },
     {
       "id": "42642789",
@@ -115,7 +139,11 @@
       "journal": "Clinical pharmacology and therapeutics",
       "year": "2026",
       "doi": "doi: 10.1002/cpt.70453",
-      "link": "https://pubmed.ncbi.nlm.nih.gov/42642789/"
+      "link": "https://pubmed.ncbi.nlm.nih.gov/42642789/",
+      "abstract": "",
+      "tldr": "",
+      "citations": null,
+      "openAccessPdf": ""
     },
     {
       "id": "42638221",
@@ -129,7 +157,11 @@
       "journal": "Clinical pharmacology and therapeutics",
       "year": "2026",
       "doi": "doi: 10.1002/cpt.70430",
-      "link": "https://pubmed.ncbi.nlm.nih.gov/42638221/"
+      "link": "https://pubmed.ncbi.nlm.nih.gov/42638221/",
+      "abstract": "",
+      "tldr": "",
+      "citations": null,
+      "openAccessPdf": ""
     }
   ]
 }
