@@ -22,8 +22,8 @@ function randomDelay(min = 800, max = 2000) {
 async function scrape() {
   console.log('Starting LinkedIn scrape...');
 
-  if (!process.env.LINKEDIN_EMAIL || !process.env.LINKEDIN_PASSWORD) {
-    console.error('Missing LINKEDIN_EMAIL or LINKEDIN_PASSWORD secrets.');
+  if (!process.env.LINKEDIN_COOKIE) {
+    console.error('Missing LINKEDIN_COOKIE secret.');
     process.exit(0); // Don't fail build, keep existing data
   }
 
@@ -38,30 +38,19 @@ async function scrape() {
     locale: 'en-US'
   });
 
+  // Inject session cookie — no login needed
+  await context.addCookies([{
+    name: 'li_at',
+    value: process.env.LINKEDIN_COOKIE,
+    domain: '.linkedin.com',
+    path: '/',
+    httpOnly: true,
+    secure: true
+  }]);
+
   const page = await context.newPage();
 
   try {
-    // --- Login ---
-    console.log('Logging in...');
-    await page.goto('https://www.linkedin.com/login', { waitUntil: 'networkidle', timeout: 30000 });
-    await randomDelay();
-
-    await page.fill('#username', process.env.LINKEDIN_EMAIL);
-    await randomDelay(400, 800);
-    await page.fill('#password', process.env.LINKEDIN_PASSWORD);
-    await randomDelay(600, 1000);
-    await page.click('[type="submit"]');
-
-    await page.waitForNavigation({ waitUntil: 'networkidle', timeout: 30000 }).catch(() => {});
-    await randomDelay(2000, 3000);
-
-    // Check if login succeeded
-    const url = page.url();
-    if (url.includes('checkpoint') || url.includes('login')) {
-      console.warn('Login may have been blocked or requires verification. Keeping existing data.');
-      await browser.close();
-      process.exit(0);
-    }
 
     // --- Company page ---
     console.log('Opening company page...');
