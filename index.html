@@ -172,33 +172,70 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-
-    .pub-title {
-      font-size: 1.35rem;
-      font-weight: 600;
-      line-height: 1.4;
-      margin-bottom: 20px;
-    }
-
-    .pub-authors {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.6;
       margin-bottom: 10px;
     }
 
-    .pub-authors strong {
-      color: rgba(255,255,255,0.8);
+    .pub-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .pub-authors {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .pub-authors strong { color: rgba(255,255,255,0.85); }
+
+    .pub-tldr {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.9);
+      border-left: 3px solid var(--gold);
+      padding-left: 14px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+    }
+
+    .pub-abstract {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.7);
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 6;
+      -webkit-box-orient: vertical;
+    }
+
+    .pub-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: auto;
+      padding-top: 12px;
     }
 
     .pub-year {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       color: var(--muted);
-      margin-top: auto;
-      padding-top: 16px;
     }
+
+    .pub-citations {
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .pub-citations svg { opacity: 0.5; }
 
     /* ── PROGRESS DOTS ──────────────────────────────── */
     .dots {
@@ -432,13 +469,33 @@ async function loadPubMed() {
       ).join(', ');
       const etAl = authors.length > 5 ? ' <em>et al.</em>' : '';
 
+      // Prefer TL;DR, fall back to abstract excerpt
+      const summary = pub.tldr
+        ? `<div class="pub-tldr">${pub.tldr}</div>`
+        : pub.abstract
+          ? `<div class="pub-abstract">${pub.abstract}</div>`
+          : '';
+
+      const citations = pub.citations !== null && pub.citations !== undefined
+        ? `<div class="pub-citations">
+             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+               <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+             </svg>
+             ${pub.citations} citation${pub.citations !== 1 ? 's' : ''}
+           </div>`
+        : '';
+
       return `
         <div class="pub-journal">${pub.journal}</div>
         <div class="pub-title">${pub.title}</div>
         <div class="pub-authors">${first5}${etAl}</div>
-        <div class="pub-year">Published ${pub.year}</div>
+        ${summary}
+        <div class="pub-meta">
+          <div class="pub-year">Published ${pub.year}</div>
+          ${citations}
+        </div>
       `;
-    }, SLIDE_INTERVAL / 2); // Offset so panels don't switch simultaneously
+    }, SLIDE_INTERVAL / 2);
   } catch (e) {
     console.warn('PubMed load failed:', e.message);
     document.getElementById('pub-carousel').innerHTML =
