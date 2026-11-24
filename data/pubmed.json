@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-23T11:20:56.424Z",
+  "updated": "2026-11-24T16:48:52.731Z",
   "publications": [
     {
       "id": "43044887",
@@ -15,10 +15,10 @@
       "year": "2026",
       "doi": "doi: 10.1016/j.ejps.2026.107717",
       "link": "https://pubmed.ncbi.nlm.nih.gov/43044887/",
-      "abstract": "Lipopolysaccharide (LPS) challenge studies in animal models and healthy volunteers are widely used to investigate inflammatory cytokine responses and evaluate anti-inflammatory therapies. Quantitative interspecies differences complicate translation of anti-inflammatory responses and their pharmacological modulation from animals to humans. This study aimed to demonstrate how a model-based framework can be used to characterize LPS-induced cytokine responses and quantify interspecies differences towards improving animal-to-human translation. To this end, we utilized data from published LPS challenge studies in humans, pigs, and rats, from which study characteristics, LPS doses, and concentration-time profiles of interleukin-6 (IL-6) and tumour necrosis factor-α (TNF-α) were extracted. For each species, cytokine dynamics were characterized using a kinetic-pharmacodynamic (K-PD) model with a turnover model structure where LPS stimulated cytokine production. Delay differential equations (DDEs) were used to account for delayed cytokine production. The model framework adequately described species-specific IL-6 and TNF-α responses and enabled quantitative comparison of LPS effects on cytokine production. Overall, this study demonstrates how LPS challenge data can be integrated into a quantitative framework for investigating interspecies differences. The framework provides a foundation for quantitative translation of inflammatory responses from animal models to humans.",
-      "tldr": "How LPS challenge data can be integrated into a quantitative framework for investigating interspecies differences is demonstrated and provides a foundation for quantitative translation of inflammatory responses from animal models to humans.",
-      "citations": 0,
-      "openAccessPdf": "https://www.sciencedirect.com/science/article/pii/S0928098726002915/pdf"
+      "abstract": "",
+      "tldr": "",
+      "citations": null,
+      "openAccessPdf": ""
     },
     {
       "id": "43018891",
@@ -56,10 +56,10 @@
       "year": "2026",
       "doi": "pii: fnag125. doi: 10.1093/femsle/fnag125",
       "link": "https://pubmed.ncbi.nlm.nih.gov/42852779/",
-      "abstract": "Heteroresistance, where a small subpopulation of phenotypically resistant cells coexists within an otherwise susceptible population, plays a critical role in bacterial survival during antibiotic exposure. Yet, its influence on the invasion success of genetically resistant strains remains poorly understood. In this study, we investigate the influence of bacterial heteroresistance, growth, and antibiotic selection on the outcome of an invasion experiment. We quantified the invasion dynamics of a bioluminescent colistin-resistant Pseudomonas aeruginosa strain across a colistin concentration gradient during co-culture with colistin-susceptible clinical P. aeruginosa isolates with varying levels of heteroresistance. The observed variation in heteroresistance and fitness of the clinical isolates allowed investigation of the impact of these factors on invasion dynamics. We hypothesized that fitter isolates would limit invasion through competitive exclusion, while heteroresistant isolates, despite their growth costs, may serve as reservoirs for resistance evolution under antibiotic selection. Our results show that in antibiotic-free conditions, faster-growing isolates competitively excluded the colistin resistant invader while isolates with high levels of heteroresistance failed to do so. This competitive landscape shifted with increasing colistin concentration, giving the invader a fitness advantage that peaked around 2-4xMIC of the clinical isolate. The shift in the landscape over the colistin gradient might further have been influenced by the presence of heteroresistance in the clinical isolates. These findings reveal how both heteroresistance and competitive exclusion shapes invasion dynamics. Understanding these interactions is critical for redesigning treatment strategies that minimize ecological opportunities for resistant strains to establish and expand.",
-      "tldr": "The results show that in antibiotic-free conditions, faster-growing isolates competitively excluded the colistin resistant invader while isolates with high levels of heteroresistance failed to do so.",
-      "citations": 0,
-      "openAccessPdf": "https://doi.org/10.64898/2025.12.15.694340"
+      "abstract": "",
+      "tldr": "",
+      "citations": null,
+      "openAccessPdf": ""
     },
     {
       "id": "42775990",
@@ -123,10 +123,10 @@
       "year": "2026",
       "doi": "doi: 10.1128/aac.00980-26",
       "link": "https://pubmed.ncbi.nlm.nih.gov/42690196/",
-      "abstract": "W e",
+      "abstract": "",
       "tldr": "",
-      "citations": 0,
-      "openAccessPdf": "https://doi.org/10.1128/aac.00980-26"
+      "citations": null,
+      "openAccessPdf": ""
     },
     {
       "id": "42642789",
