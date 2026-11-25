@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-24T16:48:52.731Z",
+  "updated": "2026-11-25T16:36:34.114Z",
   "publications": [
     {
       "id": "43044887",
@@ -36,10 +36,10 @@
       "year": "2026",
       "doi": "doi: 10.1007/s40262-026-01714-5",
       "link": "https://pubmed.ncbi.nlm.nih.gov/43018891/",
-      "abstract": "BACKGROUND AND OBJECTIVE\nDrug treatment optimization involves multiple competing objectives, including efficacy, toxicity, resistance, and cost. It is further complicated by interindividual variability that can make standardized regimens suboptimal for individual patients. We developed a population pharmacokinetics- pharmacodynamics (PKPD)-based framework to optimize dosing regimen at the population-level while accounting for interindividual variability, covariate distributions, and clinical expert input.\n\n\nMETHODS\nThe framework optimizes treatment design parameters, including dose and dosing frequency, to maximize population attainment of treatment objectives. Individual attainment of these objectives is estimated using a population PKPD model and quantified into a penalty metric to enable multi-objective dose regimen optimization. Clinical expert input is incorporated through two approaches: 1) multi-criteria decision analysis (MCDA)-based objective weight assignment and 2) gate optimization, an approach to search for a treatment design for which target attainment is equal to or greater than a reference treatment across all objectives.\n\n\nRESULTS\nThe framework was evaluated in case studies to highlight how this approach can support complex treatment design, incorporate clinical expert input, and integrate covariate information. Grid search evaluation confirmed that the framework identifies solutions close to the expected location of the global optimum.\n\n\nCONCLUSION\nThe presented framework is adaptable to diverse patient and disease contexts and supports population-level, model-informed dosing optimization.",
-      "tldr": "A population pharmacokinetics- pharmacodynamics (PKPD)-based framework to optimize dosing regimen at the population-level while accounting for interindividual variability, covariate distributions, and clinical expert input is developed.",
-      "citations": 0,
-      "openAccessPdf": "https://link.springer.com/content/pdf/10.1007/s40262-026-01714-5.pdf"
+      "abstract": "",
+      "tldr": "",
+      "citations": null,
+      "openAccessPdf": ""
     },
     {
       "id": "42852779",
